@@ -1,4 +1,6 @@
-﻿module.exports = {
+﻿var helpers = require('./helpers');
+
+module.exports = {
   devtool: 'inline-source-map',
 
   resolve: {
@@ -22,7 +24,13 @@
       },
       {
         test: /\.css$/,
+        exclude: helpers.root('src', 'app'),
         loader: 'null'
+      },
+      {
+        test: /\.css$/,
+        include: helpers.root('src', 'app'),
+        loader: 'raw'
       }
     ]
   }
